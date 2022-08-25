@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/794b4bbca7.js" crossorigin="anonymous"></script>
+    <title>Vue in Classe</title>
+
+</head>
+
+<body>
+    <div id="root">
+
+
+        <div class="container">
+            <header>
+                <h1>Todolist</h1>
+            </header>
+
+            <main>
+                <div class="containre new-todo__wrapper">
+
+                    <input type="text" v-model="newTodo" placeholder="Fare..." @keypress="enterKey">
+                    <input @click="addTodo" type="button" value="Aggiungi">
+
+                </div>
+                <h2>To Do</h2>
+                <ul class="todo-list">
+                    <li v-for="(todo,index) in todos" @click="toggleDoneOf(todo)"
+                        :class="[todo.done ?'done':'', todo.text.length < 12 ? 'short-text': 'long-text',classiTodos]">
+
+                        {{todo.text}}
+
+
+                        <i class="fa-solid fa-xmark"></i>
+                    </li>
+                    <!-- <li class="todo">
+                        fare la spesa
+                        <i class="fa-solid fa-x"></i>
+                    </li>
+                    <li class="todo done">
+                        buttare i pattumi
+                        <i class="fa-solid fa-x"></i>
+                    </li>
+                    <li class="todo">
+                        fare la doccia
+                        <i class="fa-solid fa-x"></i>
+                    </li> -->
+                </ul>
+        </div>
+        <div class="container">
+            <h2>Done</h2>
+            <div class="todo-list">
+                <!-- solo task completate  PROPRIETà COMPUTED
+                    ARRAY FILTRATO CON SOLO ELEMENTI DO -->
+                <!-- {{provaComputed}}
+                    {{todos[0].text}} -->
+                <ul>
+                    <li v-for="(todo) in provaComputed" class="done-todo todo ">
+                        {{todo}}
+                        <i class="fa-solid fa-check-double"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </main>
+    </div>
+
+
+
+
+
+
+    <script src="./js/myscript.js"></script>
+</body>
+
+</html>
